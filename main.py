@@ -52,13 +52,12 @@ layout = [[sg.Text('Teraz możesz zmodyfikować otrzymaną wiadomość.\nJeśli 
                  [sg.InputText(default_text = receivedMessage)],
                  [sg.Submit(), sg.Cancel()]]
 
-reecivedMessage = values[0]
+
 window = sg.Window('Window Title', layout)
 event, values = window.read()
 window.close()
-receivedMessageSHA = hashlib.sha3_224(receivedMessage.encode('ascii')).hexdigest().encode('ascii')
+receivedMessageSHA = hashlib.sha3_224(values[0].encode('ascii')).hexdigest().encode('ascii')
 if(receivedMessageSHA == decrypted):
-  print("SHA correct")
-
+  sg.popup("SHA są zgodne")
 else:
-  print("SHA incorrect")
+  sg.popup("SHA nie są zgodne. Ktoś mógł ingerować w plik.")
