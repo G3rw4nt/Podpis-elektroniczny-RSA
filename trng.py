@@ -25,7 +25,7 @@ def obtain():
     os.rename(response, new_file)
     file = open(new_file, "rb")
 
-    # Get first 512 bytes
+    # Get bytes
     for i in range(0, 512):
         byte = file.read(1)
         intsFromFile.append(int.from_bytes(byte, "big"))
@@ -41,4 +41,4 @@ def obtain():
     # Close, delete file and return random number
     file.close()
     os.remove("temp.mp3")
-    return int(num[0]).to_bytes(512,'big')
+    return int(num[0])
