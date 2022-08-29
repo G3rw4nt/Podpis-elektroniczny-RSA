@@ -42,3 +42,8 @@ def obtain():
     file.close()
     os.remove("temp.mp3")
     return int(num[0])
+
+randomNumber = obtain() + 127
+
+def get_random(x):
+  return os.urandom(randomNumber)
